@@ -19,8 +19,7 @@ this.salary=0
 
 //To Render The employees on the home page
 Employee.prototype.renderEmployees= function(){
-  
-     document.write('<p> Employee name is : ${this.fullname} and earns  : ${this.salary} </p>')
+  document.write(`Name: ${this.name} | Salary: ${this.salary}`)
 }
 
 //Calculate the Salary
@@ -74,3 +73,5 @@ let employee6= new Employee("1005","Rana Saleh", "Development", "Junior","./asse
 let employee7= new Employee("1006","Hadi Ahmad ", "Finance", "Mid-Senior","./assests/hadi.png");
 
 console.log(allEmployees)
+
+employee1.renderEmployees();
