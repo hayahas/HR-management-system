@@ -19,7 +19,8 @@ this.salary=0
 
 //To Render The employees on the home page
 Employee.prototype.renderEmployees= function(){
-  document.write(`Name: ${this.name} | Salary: ${this.salary}`)
+    for (let i = 0; i < allEmployees.length-1; i++) 
+  document.write(`Name: ${allEmployees[i].fullName} | Salary: ${allEmployees[i].salary} <br>`)
 }
 
 //Calculate the Salary
@@ -75,3 +76,31 @@ let employee7= new Employee("1006","Hadi Ahmad ", "Finance", "Mid-Senior","./ass
 console.log(allEmployees)
 
 employee1.renderEmployees();
+
+//window.addEventListener('load', function() {
+   // console.log(form)
+  //});
+  
+  Employee.prototype.randomId=function(min,max){
+    var random=Math.floor(Math.random()* (max-min + 1) + min);
+    return random;
+}
+
+ document.addEventListener("DOMContentLoaded", function(event) {
+     let form=document.getElementById('form1');
+     console.log(form);
+
+     function submitHandler(event){
+         event.preventDefault();
+      console.log(event)
+      let empId=randomId(1,8)
+  let employeeName=event.target.EmpName.value;
+  let dep=event.target.dep.value;
+  let lvl=event.target.level.value;
+  let imgUrl=event.target.img.value;
+  let newEmployee= new Employee(empId,employeeName, dep, lvl,imgUrl);
+  newEmployee.renderEmployees();
+     }
+     form.addEventListener(submit, submitHandler);
+     //
+   })
