@@ -16,6 +16,19 @@ header{
 }
 
 
+
+form{
+    padding-left:20px; 
+    color:rgb(79, 121, 123)
+    
+}
+
+form label{
+
+font-family: cursive;
+font-weight: bold;
+}
+
 footer{
     height:50px;
     width: 100vw;
