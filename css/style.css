@@ -15,7 +15,48 @@ header{
     
 }
 
+section{
+    display: flex;
+    align-items: center;
+    margin: auto;
+    flex-wrap: wrap; 
+ }
 
+ section div{
+    margin-left:10px;
+    margin-bottom: 10px;
+ }
+
+.card {
+    background-color: #e5ded0fa;
+    padding: 20px;
+    /* border-radius: px; */
+    border-radius: 5px;
+    display:block;
+    width:230px;
+    box-shadow: 10px 10px 5px gray;
+  }
+  .card-container {
+    display: flex;
+  }
+  img{
+    width: 200px;
+    height: 200px;
+}
+  
+  h2 {
+    color: #333;
+    font-size: 20px;
+  }
+  
+  p {
+    color: #666;
+    margin-bottom: 10px;
+  }
+
+  img{
+    align-content: center;
+  }
 
 form{
     padding-left:20px; 
@@ -35,7 +76,7 @@ footer{
     left:0;
     right:0;
     bottom:0;
-    position:absolute;
+    position:fixed;
     background-color:#914049;
     justify-content: center;
 }
