@@ -19,44 +19,51 @@
             </div>
         </header> 
         <br>
- <!-- <section id ="secTag" class="card" > -->
+        <form id="form1" class = "card" style ="margin-left: 40%;">
+
+            <label for="EmpName">Full name:</label>
+            <input type ="text" id ="EmpName" name="EmpName">
+            <br><br>
+            <label for="dep">Department:</label>
+            <select name="dep" id="dep">
+                <option>--select--</option>
+              <option>Administration</option>
+              <option>Marketing</option>
+              <option >Development</option>
+              <option >Finance</option>
+            </select>
+            <br><br>
+            <label for="level">Level:</label>
+            <select name="level" id="level">
+                <option>--select--</option>
+              <option>Junior</option>
+              <option>Mid-Senior</option>
+              <option >Senior</option>
+            </select>
+            <br><br>
+            <label for="img">Image URL:</label>
+            <input type ="text" id ="img" name="img">
+        <br></br>
+        <input type="submit" id ="submit" value="submit">
+        <br><br>
+        </form> 
+        <br><br>
     <section id ="secTag" style="margin-left: 50px;">
-
- </section>
+    </section>
 <br><br>
+<table id="table"  style="margin-left: 50px; margin-bottom: 50%">
+    <!-- <tr>
+        
+        <th>Department  </th>
+       <th>Number of Employees</th>
+       <th>Total Salary</th>
+      <th>Average</th>
+      </tr>
+      <tr>
 
- <section id ="secTag1"></section>
-     <form id="form1">
+      </tr> -->
 
-    <label for="EmpName">Full name:</label>
-    <input type ="text" id ="EmpName" name="EmpName">
-    <br><br>
-    <label for="dep">Department:</label>
-    <select name="dep" id="dep">
-        <option>--select--</option>
-      <option>Administration</option>
-      <option>Marketing</option>
-      <option >Development</option>
-      <option >Finance</option>
-    </select>
-    <br><br>
-    <label for="level">Level:</label>
-    <select name="level" id="level">
-        <option>--select--</option>
-      <option>Junior</option>
-      <option>Mid-Senior</option>
-      <option >Senior</option>
-    </select>
-    <br><br>
-    <label for="img">Image URL:</label>
-    <input type ="text" id ="img" name="img">
-<br></br>
-<input type="submit" style="margin-bottom: 100px;" id ="submit" value="submit">
-<br><br>
-
-  
-
-</form> 
+</table>
 </main>
 
 
@@ -70,5 +77,6 @@
   </div>
 </footer>
 <script src="/js/app.js"></script>
+<script src="/js/accounting.js"></script>
 </body>
 </html>
