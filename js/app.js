@@ -5,7 +5,6 @@ const allEmployees=[]
 
 
 //Constructor
-//let employee1= new Employee("1000","Ghazi Samer", "Adminstartion", "Senior", "./assests/ghazi.png");
 function Employee(employeeId, fullName, department, level, imageUrl)  {
 this.employeeId=employeeId;
 this.fullName=fullName;
@@ -19,17 +18,21 @@ this.salary=this.emloyeeLevel();
    allEmployees.push(this);
 }
 
-let secEle =document.getElementById("secTag")
 
+
+
+//get section element
+let secEle =document.getElementById("secTag")
 
 //To Render The employees on the home page
 Employee.prototype.renderEmployees= function(){
+  //random card number
     let cardNum=generateCardNum()
-    // for (let i = 0; i < allEmployees.length-1; i++) {}
+
     let divEle= document.createElement("div")
 
     divEle.classList.add("card")
-let h3Ele= document.createElement("h3")
+   let h3Ele= document.createElement("h3")
 h3Ele.textContent=this.fullName+ " " + " | " +this.employeeId
 h3Ele.style.fontWeight="bold"
 
@@ -57,6 +60,10 @@ pEle3.style.alignContent="center"
 
  secEle.appendChild(divEle)
 }
+
+
+
+
 
  //check the level of employee
 Employee.prototype.emloyeeLevel= function(){
@@ -93,11 +100,7 @@ let employee6= new Employee("1005","Rana Saleh", "Development", "Junior","../emp
 let employee7= new Employee("1006","Hadi Ahmad ", "Finance", "Mid-Senior","../emp.png");
 
 
-//loop to apply the functions on the whole array
-for (let i = 0; i < allEmployees.length-1; i++) {
-    allEmployees[i].emloyeeLevel();
-    allEmployees[i].renderEmployees();
-}
+
 console.log(allEmployees)
 
 //employee1.renderEmployees();
@@ -134,47 +137,56 @@ function generateEmployeeID() {
      let imgUrl=event.target.img.value;
      let cardNum=generateCardNum()
      let newEmployee= new Employee(empId,employeeName, dep, lvl,imgUrl);
+     newEmployee.renderEmployees();
      allEmployees.push(newEmployee)
-     //let employee= document.createElement("p")
-  let divEle= document.createElement("div")
-    
-    divEle.classList.add("card")
-let h3Ele= document.createElement("h3")
-h3Ele.textContent=newEmployee.fullName+ " " + " | " +newEmployee.employeeId
-h3Ele.style.fontWeight="bold"
-
-divEle.appendChild(h3Ele)
-
-
-
-let imgEle = document.createElement("img");
-imgEle.src= newEmployee.imageUrl
-
-divEle.appendChild(imgEle)
-
-let pEle1= document.createElement("p")
-pEle1.textContent = (`Department: ${newEmployee.department}`)
-
-divEle.appendChild(pEle1)
-  
- let pEle2= document.createElement("p")
- pEle2.textContent=(`Level : ${newEmployee.level}`)
- divEle.appendChild(pEle2)
-
- let pEle3= document.createElement("p")
- pEle3.textContent=(cardNum)
-pEle3.style.alignContent="center"
- divEle.appendChild(pEle3)
-
- secEle.appendChild(divEle)
-
-    newEmployee.renderEmployees;
-
+     saveData(allEmployees)
     //employee.textContent=(` Name :${newEmployee.fullName} | Salary: ${newEmployee.salary} `)
   console.log(newEmployee)
 
 
    })
 
+
+///////////////lab 09
+
+//function to save my data in LS
+function saveData(data){
+  let strinArr= JSON.stringify(data)
+  localStorage.setItem("Employees", strinArr)
+}
+
+//loop to apply the functions on the whole array
+function renderAll(){
+  for (let i = 0; i < allEmployees.length-1; i++) {
+      allEmployees[i].emloyeeLevel();
+      allEmployees[i].renderEmployees();
+     // allEmployees[i].renderTable();
+  
+
+    newEmployee.renderEmployees;
+  }
+  }
+
+
+//function to retrieve my data from LS
+function getData(data){
+  let retrivedArr= localStorage.getItem('Employees')
+  let objArr=JSON.parse(retrivedArr)
+  console.log(objArr)
+//
+//function Employee(employeeId, fullName, department, level, imageUrl)
+  if(objArr !=null){
+    for(let i=6;i<=objArr.length-1;i++)
+  {
+    new Employee(objArr[i].employeeId, objArr[i].fullName, objArr[i].department, objArr[i].level, objArr[i].imageUrl)
+  }
+  }
+
+
+  renderAll();
+  
+}
+
+getData();
  
  
