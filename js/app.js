@@ -167,7 +167,7 @@ pEle3.style.alignContent="center"
  divEle.appendChild(pEle3)
 
  secEle.appendChild(divEle)
-    secEle.appendChild(employee)
+
     newEmployee.renderEmployees;
 
     //employee.textContent=(` Name :${newEmployee.fullName} | Salary: ${newEmployee.salary} `)
