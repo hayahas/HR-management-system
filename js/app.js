@@ -1,7 +1,7 @@
 'use strict'
 
 // Array of Objects
-const allEmployees=[]
+let allEmployees=[]
 
 
 //Constructor
@@ -138,7 +138,7 @@ function generateEmployeeID() {
      let cardNum=generateCardNum()
      let newEmployee= new Employee(empId,employeeName, dep, lvl,imgUrl);
      newEmployee.renderEmployees();
-     allEmployees.push(newEmployee)
+    // allEmployees.push(newEmployee)
      saveData(allEmployees)
     //employee.textContent=(` Name :${newEmployee.fullName} | Salary: ${newEmployee.salary} `)
   console.log(newEmployee)
@@ -157,7 +157,8 @@ function saveData(data){
 
 //loop to apply the functions on the whole array
 function renderAll(){
-  for (let i = 0; i < allEmployees.length-1; i++) {
+
+  for (let i = 0; i < allEmployees.length; i++) {
       allEmployees[i].emloyeeLevel();
       allEmployees[i].renderEmployees();
      // allEmployees[i].renderTable();
@@ -173,7 +174,7 @@ function getData(data){
 //
 //function Employee(employeeId, fullName, department, level, imageUrl)
   if(objArr !=null){
-    for(let i=6;i<=objArr.length-1;i++)
+    for(let i=7;i<=objArr.length-1;i++)
   {
     new Employee(objArr[i].employeeId, objArr[i].fullName, objArr[i].department, objArr[i].level, objArr[i].imageUrl)
   }
@@ -185,5 +186,4 @@ function getData(data){
 }
 
 getData();
- 
  

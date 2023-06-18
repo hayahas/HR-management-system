@@ -1,60 +1,47 @@
 'use strict'
 
-let departmentData = [
-   "Adminstartion","Finance","Marketing","Development"];
+//get the data from ls
+const employees = JSON.parse(localStorage.getItem("Employees")); 
+console.log("Employees",employees)
+
+//create department obj
+const departments = {};
+
+//loop in the employee array & creat elemnts in the obj from employee
+employees.forEach(emp => {
+  if (!departments[emp.department]) {
+    departments[emp.department] = {
+      name: emp.department,
+      numEmployees: 0,
+      totalSalary: 0
+    };
+  }
   
-  
-  let tableHTML = `
-    <table>
-      <thead>
-        <tr>
-          <th>Department Name</th>
-          <th>Number of Employees</th>
-          <th>Average Salary</th>
-          <th>Total Salary</th>
-        </tr>
-      </thead>
-      <tbody>
-  `;
-  
-  let totalEmployees = 0;
-  let totalSalary = 0;
-  
-  departmentData.forEach(department => {
-    // Department rows here...
-    let departmentEmployees = department.employees.length;
-    let departmentTotalSalary = department.employees.reduce((sum, employee) => sum + employee.salary, 0);
-    let departmentAverageSalary = departmentTotalSalary / departmentEmployees;
-  
-    totalEmployees += departmentEmployees;
-    totalSalary += departmentTotalSalary;
-  
-    tableHTML += `
-      <tr>
-        <td>${department.name}</td>
-        <td>${departmentEmployees}</td>
-        <td>${departmentAverageSalary.toFixed(2)}</td>
-        <td>${departmentTotalSalary}</td>
-      </tr>
-    `;
-  });
-  
-  let averageSalary = totalSalary / totalEmployees;
-  
-  tableHTML += `
-      </tbody>
-      <tfoot>
-        <tr>
-          <td><strong>Total</strong></td>
-          <td>${totalEmployees}</td>
-          <td>${averageSalary.toFixed(2)}</td>
-          <td>${totalSalary}</td>
-        </tr>
-      </tfoot>
-    </table>
-  `;
-  
-  // Append the table HTML to the desired element in the HTML document
-  let tableContainer = document.getElementById("table");
-  tableContainer.innerHTML = tableHTML;
-  
+  departments[emp.department].numEmployees++;
+  departments[emp.department].totalSalary += emp.salary;
+});
+
+
+Object.values(departments).forEach(dept => {
+  dept.avgSalary = dept.totalSalary / dept.numEmployees;
+});
+
+//
+const totalNumEmployees = employees.length;
+const totalAvgSalary = Object.values(departments).reduce((total, dept) => total + dept.avgSalary, 0) / Object.values(departments).length;
+const totalSalary = Object.values(departments).reduce((total, dept) => total + dept.totalSalary, 0);
+
+//declare tablHtml
+let tableHtml = "<table><thead><tr><th>Department Name</th><th>Number of Employees</th><th>Total Salary</th><th>Average Salary</th></tr></thead><tbody>";
+
+Object.values(departments).forEach(dept => {
+  tableHtml += `<tr><td>${dept.name}</td><td>${dept.numEmployees}</td><td>${dept.totalSalary}</td><td>${dept.avgSalary}</td></tr>`;
+});
+
+//add calculations to tableHtml
+tableHtml += `<tfoot><tr><td>Total</td><td>${totalNumEmployees}</td><td>${totalAvgSalary}</td><td>${totalSalary}</td></tr></tfoot></table>`;
+
+//append the tableHtml to the table in acc.html
+document.getElementById("table").innerHTML = tableHtml;
+
+console.log(Object.values(departments))
