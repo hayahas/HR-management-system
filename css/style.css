@@ -15,6 +15,11 @@ header{
     
 }
 
+table, th, td {
+  padding:5px;
+  border: 1px solid;
+}
+
 section{
     display: flex;
     align-items: center;
