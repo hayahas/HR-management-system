@@ -163,8 +163,11 @@ function renderAll(){
       allEmployees[i].renderEmployees();
      // allEmployees[i].renderTable();
   
+
+    newEmployee.renderEmployees;
   }
   }
+
 
 //function to retrieve my data from LS
 function getData(data){
